@@ -49,13 +49,12 @@ public class StudentList {
             try {
                 String readLine = fileReader(Constants.FILE_NAME);
                 String words[] = readLine.split(Constants.StudentEntryDelimiter);
-                boolean done = false;
                 String substring = args[0].substring(1);
 
-                for (int idx = 0; idx < words.length && !done; idx++) {
+                for (int idx = 0; idx < words.length; idx++) {
                     if (words[idx].trim().equals(substring)) {
                         System.out.println("We found it!");
-                        done = true;
+                        break;
                     }
                 }
             } catch (Exception e) {
@@ -66,20 +65,8 @@ public class StudentList {
             System.out.println(Constants.LoadingDataText);
             try {
                 String readLine = fileReader(Constants.FILE_NAME);
-                char readLineCharArray[] = readLine.toCharArray();
-                boolean in_word = false;
-                int count = 0;
-                for (char char_Ind : readLineCharArray) {
-                    if (char_Ind == ' ') {
-                        if (!in_word) {
-                            count++;
-                            in_word = true;
-                        } else {
-                            in_word = false;
-                        }
-                    }
-                }
-                System.out.println(count + " word(s) found ");
+                String words[] = readLine.split(Constants.StudentEntryDelimiter);
+                System.out.println(words.length + " word(s) found ");
             } catch (Exception e) {
             }
             System.out.println("Data Loaded.");
