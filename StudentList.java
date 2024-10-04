@@ -37,10 +37,8 @@ public class StudentList {
         } else if (args[0].contains(Constants.AddEntry)) {
             System.out.println(Constants.LoadingDataText);
             try {
-                Date date = new Date();
-                String date_format = "dd/mm/yyyy-hh:mm:ss a";
-                DateFormat dateFormat = new SimpleDateFormat(date_format);
-                String formatted = dateFormat.format(date);
+                DateFormat dateFormat = new SimpleDateFormat(Constants.DATE_FORMAT);
+                String formatted = dateFormat.format(new Date());
                 writeToFile(Constants.FILE_NAME, formatted, args[0].substring(1));
             } catch (Exception e) {
 
