@@ -10,11 +10,11 @@ public class StudentList {
         }
 
 //		Check arguments
-        if (args[0].equals("a")) {
-            System.out.println("Loading data ...");
+        if (args[0].equals(Constants.ShowAll)) {
+            System.out.println(Constants.LoadingDataText);
             try {
-                String readLine = fileReader("students.txt");
-                String words[] = readLine.split(",");
+                String readLine = fileReader(Constants.FILE_NAME);
+                String words[] = readLine.split(Constants.StudentEntryDelimiter);
                 for (String word : words) {
                     System.out.println(word.trim());
                 }
@@ -22,11 +22,11 @@ public class StudentList {
 
             }
             System.out.println("Data Loaded.");
-        } else if (args[0].equals("r")) {
-            System.out.println("Loading data ...");
+        } else if (args[0].equals(Constants.ShowRandom)) {
+            System.out.println(Constants.LoadingDataText);
             try {
-                String readLine = fileReader("students.txt");
-                String words[] = readLine.split(",");
+                String readLine = fileReader(Constants.FILE_NAME);
+                String words[] = readLine.split(Constants.StudentEntryDelimiter);
                 Random random = new Random();
                 int anInt = random.nextInt(words.length);
                 System.out.println(words[anInt].trim());
@@ -34,23 +34,23 @@ public class StudentList {
 
             }
             System.out.println("Data Loaded.");
-        } else if (args[0].contains("+")) {
-            System.out.println("Loading data ...");
+        } else if (args[0].contains(Constants.AddEntry)) {
+            System.out.println(Constants.LoadingDataText);
             try {
                 Date date = new Date();
                 String date_format = "dd/mm/yyyy-hh:mm:ss a";
                 DateFormat dateFormat = new SimpleDateFormat(date_format);
                 String formatted = dateFormat.format(date);
-                writeToFile("students.txt", formatted, args[0].substring(1));
+                writeToFile(Constants.FILE_NAME, formatted, args[0].substring(1));
             } catch (Exception e) {
 
             }
             System.out.println("Data Loaded.");
-        } else if (args[0].contains("?")) {
-            System.out.println("Loading data ...");
+        } else if (args[0].contains(Constants.FindEntry)) {
+            System.out.println(Constants.LoadingDataText);
             try {
-                String readLine = fileReader("students.txt");
-                String words[] = readLine.split(",");
+                String readLine = fileReader(Constants.FILE_NAME);
+                String words[] = readLine.split(Constants.StudentEntryDelimiter);
                 boolean done = false;
                 String substring = args[0].substring(1);
 
@@ -64,10 +64,10 @@ public class StudentList {
 
             }
             System.out.println("Data Loaded.");
-        } else if (args[0].contains("c")) {
-            System.out.println("Loading data ...");
+        } else if (args[0].contains(Constants.ShowCount)) {
+            System.out.println(Constants.LoadingDataText);
             try {
-                String readLine = fileReader("students.txt");
+                String readLine = fileReader(Constants.FILE_NAME);
                 char readLineCharArray[] = readLine.toCharArray();
                 boolean in_word = false;
                 int count = 0;
