@@ -4,6 +4,7 @@ import java.util.*;
 
 public class StudentList {
     public static void main(String[] args) {
+        //Check wrong
         if(args == null || args.length != 1){
             System.out.println("Usage: (a | r | c | +WORD | ?WORD)");
             return; //Exit early.
